@@ -80,35 +80,61 @@ public class Letters {
 
 
 
+        // timon method (what i thought it would be like)
+//        time = System.currentTimeMillis();
+//        ArrayList<Character> characters = new ArrayList<>();
+//        ArrayList<NumberObj> integers = new ArrayList<>();
+//        Character character2;
+//        for (int i = 0; i < text.length(); i++) {
+//            character2 = text.charAt(i);
+//            if (characters.contains(character2)) {
+//                //integers.add(characters.indexOf(character2), integers.get(characters.indexOf(character2)) + 1);
+//                integers.get(characters.indexOf(character2)).addOne();
+//            } else {
+//                characters.add(character2);
+//                integers.add(new NumberObj());
+//            }
+//        }
+//
+//        long intResult = 0;
+//        int position = 0;
+//        for (int i = 0; i < characters.size(); i++) {
+//            if (intResult < integers.get(i).getNumber()) {
+//                intResult = integers.get(i).getNumber();
+//                position = i;
+//            }
+//        }
+//        System.out.println(characters.get(position) + " = " + integers.get(position).getNumber() + ", " +
+//                (System.currentTimeMillis() - time) + "ms");
 
 
 
         // timon method (what i thought it would be like)
-        time = System.currentTimeMillis();
-        ArrayList<Character> characters = new ArrayList<>();
-        ArrayList<Integer> integers = new ArrayList<>();
-        Character character2;
-        for (int i = 0; i < text.length(); i++) {
-            character2 = text.charAt(i);
-            if (characters.contains(character2)) {
-                integers.add(characters.indexOf(character2), integers.get(characters.indexOf(character2)) + 1);
-                integers.remove(characters.indexOf(character2) + 1);
-            } else {
-                characters.add(character2);
-                integers.add(1);
-            }
-        }
-
-        Integer intResult = 0;
-        int position = 0;
-        for (int i = 0; i < characters.size(); i++) {
-            if (intResult < integers.get(i)) {
-                intResult = integers.get(i);
-                position = i;
-            }
-        }
-        System.out.println(characters.get(position) + " = " + integers.get(position) + ", " +
-                (System.currentTimeMillis() - time) + "ms");
+//        time = System.currentTimeMillis();
+//        ArrayList<Character> characters = new ArrayList<>();
+//        ArrayList<Integer> integers = new ArrayList<>();
+//        Character character2;
+//        for (int i = 0; i < text.length(); i++) {
+//            character2 = text.charAt(i);
+//            if (characters.contains(character2)) {
+//                integers.add(characters.indexOf(character2), integers.get(characters.indexOf(character2)) + 1);
+//                integers.remove(characters.indexOf(character2) + 1);
+//            } else {
+//                characters.add(character2);
+//                integers.add(1);
+//            }
+//        }
+//
+//        Integer intResult = 0;
+//        int position = 0;
+//        for (int i = 0; i < characters.size(); i++) {
+//            if (intResult < integers.get(i)) {
+//                intResult = integers.get(i);
+//                position = i;
+//            }
+//        }
+//        System.out.println(characters.get(position) + " = " + integers.get(position) + ", " +
+//                (System.currentTimeMillis() - time) + "ms");
 
 
 
