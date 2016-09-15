@@ -30,13 +30,13 @@ public class Letters {
         // kalash method
         time = System.currentTimeMillis();
         HashMap<Character, Integer> letters = new HashMap<Character, Integer>();
-        Character character1;
+        Character character;
         for (int i = 0; i < text.length(); i++) {
-            character1 = text.charAt(i);
-            if (letters.containsKey(character1)) {
-                letters.put(character1, letters.get(character1) + 1);
+            character = text.charAt(i);
+            if (letters.containsKey(character)) {
+                letters.put(character, letters.get(character) + 1);
             } else {
-                letters.put(character1, 1);
+                letters.put(character, 1);
             }
         }
         Map.Entry<Character, Integer> result = null;
