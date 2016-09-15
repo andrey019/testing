@@ -44,7 +44,8 @@ public class Letters {
         System.out.println(result.getKey() + " = " + result.getValue() + ", " + (System.currentTimeMillis() - time));
 
 
-        
+
+
         time = System.currentTimeMillis();
         ArrayList<Character> characters = new ArrayList<>();
         ArrayList<Integer> integers = new ArrayList<>();
