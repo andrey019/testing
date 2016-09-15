@@ -86,7 +86,6 @@ public class Letters {
         // timon method (what it actually happened to be)
         String kalash = text;
         time = System.currentTimeMillis();
-        //System.out.println(kalash.substring(1,2));
         String[] stringname = new String[kalash.length()];
         int[] intcount = new int[kalash.length()];
         for (int i=0; i<stringname.length; i++)
