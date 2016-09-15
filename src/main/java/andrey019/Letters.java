@@ -57,31 +57,31 @@ public class Letters {
         // timon method
 
 
-//        time = System.currentTimeMillis();
-//        ArrayList<Character> characters = new ArrayList<>();
-//        ArrayList<Integer> integers = new ArrayList<>();
-//        Character character;
-//        for (int i = 0; i < text.length(); i++) {
-//            character = text.charAt(i);
-//            if (characters.contains(character)) {
-//                integers.remove(characters.indexOf(character));
-//                integers.add(characters.indexOf(character), integers.get(characters.indexOf(character)) + 1);
-//            } else {
-//                characters.add(character);
-//                integers.add(1);
-//            }
-//        }
-//
-//        Integer intResult = 0;
-//        int position = 0;
-//        for (int i = 0; i < characters.size(); i++) {
-//            if (intResult < integers.get(i)) {
-//                intResult = integers.get(i);
-//                position = i;
-//            }
-//        }
-//        System.out.println(characters.get(position) + " = " + integers.get(position) + ", " +
-//                (System.currentTimeMillis() - time) + "ms");
+        time = System.currentTimeMillis();
+        ArrayList<Character> characters = new ArrayList<>();
+        ArrayList<Integer> integers = new ArrayList<>();
+        Character character1;
+        for (int i = 0; i < text.length(); i++) {
+            character1 = text.charAt(i);
+            if (characters.contains(character1)) {
+                integers.add(characters.indexOf(character1), integers.get(characters.indexOf(character1)) + 1);
+                integers.remove(characters.indexOf(character1) + 1);
+            } else {
+                characters.add(character1);
+                integers.add(1);
+            }
+        }
+
+        Integer intResult = 0;
+        int position = 0;
+        for (int i = 0; i < characters.size(); i++) {
+            if (intResult < integers.get(i)) {
+                intResult = integers.get(i);
+                position = i;
+            }
+        }
+        System.out.println(characters.get(position) + " = " + integers.get(position) + ", " +
+                (System.currentTimeMillis() - time) + "ms");
 
 
         String kalash = text;
