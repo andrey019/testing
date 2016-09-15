@@ -10,17 +10,19 @@ import java.util.Map;
 public class Letters {
 
     public static void main(String[] args) {
+
+        // random text generation
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < 1000; i++) {
             stringBuilder.append(RandomStringUtils.random(100, true, true));
             stringBuilder.append("\r\n");
         }
         String text = stringBuilder.toString();
-        //System.out.println(stringBuilder.toString());
         long time = System.currentTimeMillis();
 
 
 
+        // kalash method
         HashMap<Character, Integer> letters = new HashMap<Character, Integer>();
         Character character1;
         for (int i = 0; i < text.length(); i++) {
@@ -45,7 +47,7 @@ public class Letters {
 
 
 
-
+        // timon method
         time = System.currentTimeMillis();
         ArrayList<Character> characters = new ArrayList<>();
         ArrayList<Integer> integers = new ArrayList<>();
