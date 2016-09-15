@@ -54,9 +54,7 @@ public class Letters {
 
 
 
-        // timon method
-
-
+        // timon method (what i thought it would be like)
         time = System.currentTimeMillis();
         ArrayList<Character> characters = new ArrayList<>();
         ArrayList<Integer> integers = new ArrayList<>();
@@ -84,6 +82,8 @@ public class Letters {
                 (System.currentTimeMillis() - time) + "ms");
 
 
+
+        // timon method (what it actually happened to be)
         String kalash = text;
         time = System.currentTimeMillis();
         //System.out.println(kalash.substring(1,2));
