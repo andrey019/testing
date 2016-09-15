@@ -27,7 +27,7 @@ public class Letters {
 
 
 
-        // kalash method
+        // kalash method, pure hashmap
         time = System.currentTimeMillis();
         HashMap<Character, Integer> letters = new HashMap<Character, Integer>();
         Character character;
@@ -49,8 +49,37 @@ public class Letters {
                 }
             }
         }
-        System.out.println(result.getKey() + " = " + result.getValue() + ", " +
+        System.out.println("Pure hashmap: " + result.getKey() + " = " + result.getValue() + ", " +
                 (System.currentTimeMillis() - time) + "ms");
+
+
+        // kalash method, obj hashmap
+        time = System.currentTimeMillis();
+        HashMap<Character, NumberObj> letters1 = new HashMap();
+        Character character1;
+        for (int i = 0; i < text.length(); i++) {
+            character1 = text.charAt(i);
+            if (letters1.containsKey(character1)) {
+                letters1.get(character1).addOne();
+            } else {
+                letters1.put(character1, new NumberObj());
+            }
+        }
+        Map.Entry<Character, NumberObj> result1 = null;
+        for (Map.Entry<Character, NumberObj> entry : letters1.entrySet()) {
+            if (result1 == null) {
+                result1 = entry;
+            } else {
+                if (entry.getValue().getNumber() > result1.getValue().getNumber()) {
+                    result1 = entry;
+                }
+            }
+        }
+        System.out.println("Obj hashmap: " + result1.getKey() + " = " + result1.getValue().getNumber() + ", " +
+                (System.currentTimeMillis() - time) + "ms");
+
+
+
 
 
 
@@ -58,14 +87,14 @@ public class Letters {
         time = System.currentTimeMillis();
         ArrayList<Character> characters = new ArrayList<>();
         ArrayList<Integer> integers = new ArrayList<>();
-        Character character1;
+        Character character2;
         for (int i = 0; i < text.length(); i++) {
-            character1 = text.charAt(i);
-            if (characters.contains(character1)) {
-                integers.add(characters.indexOf(character1), integers.get(characters.indexOf(character1)) + 1);
-                integers.remove(characters.indexOf(character1) + 1);
+            character2 = text.charAt(i);
+            if (characters.contains(character2)) {
+                integers.add(characters.indexOf(character2), integers.get(characters.indexOf(character2)) + 1);
+                integers.remove(characters.indexOf(character2) + 1);
             } else {
-                characters.add(character1);
+                characters.add(character2);
                 integers.add(1);
             }
         }
@@ -84,70 +113,70 @@ public class Letters {
 
 
         // timon method (what it actually happened to be)
-        String kalash = text;
-        time = System.currentTimeMillis();
-        String[] stringname = new String[kalash.length()];
-        int[] intcount = new int[kalash.length()];
-        for (int i=0; i<stringname.length; i++)
-        {
-            boolean exist = false;
-            int RememberEmptySlot = -1;
-            int RememberFullSlot = -1;
-            for( int j=0; j<stringname.length; j++)
-            {
-                if (i == kalash.length() - 1) {
-                    if(kalash.substring(i).equals(stringname[j]))
-                    {
-                        exist = true;
-                        RememberFullSlot = j;
-                    }
-                    else if(stringname[j]==null && RememberEmptySlot==-1)
-                    {
-                        RememberEmptySlot = j;
-                    }
-                } else {
-                    if(kalash.substring(i,i+1).equals(stringname[j]))
-                    {
-                        exist = true;
-                        RememberFullSlot = j;
-                    }
-                    else if(stringname[j]==null && RememberEmptySlot==-1)
-                    {
-                        RememberEmptySlot = j;
-                    }
-                }
-
-            }
-            if(exist==false)
-            {
-                if (i == kalash.length() - 1) {
-                    stringname[RememberEmptySlot] = kalash.substring(i);
-                    intcount[RememberEmptySlot] += 1;
-                } else {
-                    stringname[RememberEmptySlot] = kalash.substring(i, i + 1);
-                    intcount[RememberEmptySlot] += 1;
-                }
-
-            }
-            else
-            {
-                intcount[RememberFullSlot] += 1;
-            }
-            exist = false;
-            RememberEmptySlot = -1;
-        }
-        int max = 0;
-        int index = -1;
-        for(int i=0; i<intcount.length;i++)
-        {
-            if(max<intcount[i])
-            {
-                max = intcount[i];
-                index = i;
-            }
-        }
-
-        System.out.println("MAX="+ intcount[index] + " Char is " + stringname[index] + ", " +
-                (System.currentTimeMillis() - time) + "ms");
+//        String kalash = text;
+//        time = System.currentTimeMillis();
+//        String[] stringname = new String[kalash.length()];
+//        int[] intcount = new int[kalash.length()];
+//        for (int i=0; i<stringname.length; i++)
+//        {
+//            boolean exist = false;
+//            int RememberEmptySlot = -1;
+//            int RememberFullSlot = -1;
+//            for( int j=0; j<stringname.length; j++)
+//            {
+//                if (i == kalash.length() - 1) {
+//                    if(kalash.substring(i).equals(stringname[j]))
+//                    {
+//                        exist = true;
+//                        RememberFullSlot = j;
+//                    }
+//                    else if(stringname[j]==null && RememberEmptySlot==-1)
+//                    {
+//                        RememberEmptySlot = j;
+//                    }
+//                } else {
+//                    if(kalash.substring(i,i+1).equals(stringname[j]))
+//                    {
+//                        exist = true;
+//                        RememberFullSlot = j;
+//                    }
+//                    else if(stringname[j]==null && RememberEmptySlot==-1)
+//                    {
+//                        RememberEmptySlot = j;
+//                    }
+//                }
+//
+//            }
+//            if(exist==false)
+//            {
+//                if (i == kalash.length() - 1) {
+//                    stringname[RememberEmptySlot] = kalash.substring(i);
+//                    intcount[RememberEmptySlot] += 1;
+//                } else {
+//                    stringname[RememberEmptySlot] = kalash.substring(i, i + 1);
+//                    intcount[RememberEmptySlot] += 1;
+//                }
+//
+//            }
+//            else
+//            {
+//                intcount[RememberFullSlot] += 1;
+//            }
+//            exist = false;
+//            RememberEmptySlot = -1;
+//        }
+//        int max = 0;
+//        int index = -1;
+//        for(int i=0; i<intcount.length;i++)
+//        {
+//            if(max<intcount[i])
+//            {
+//                max = intcount[i];
+//                index = i;
+//            }
+//        }
+//
+//        System.out.println("MAX="+ intcount[index] + " Char is " + stringname[index] + ", " +
+//                (System.currentTimeMillis() - time) + "ms");
     }
 }
