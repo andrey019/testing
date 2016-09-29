@@ -22,14 +22,16 @@ public class Letters {
             stringBuilder.append(RandomStringUtils.random(1000, true, true));
             stringBuilder.append("\r\n");
         }
+        System.out.println("StringBuilder generation time: " + (System.currentTimeMillis() - time) + "ms");
+        time = System.currentTimeMillis();
         String text = stringBuilder.toString();
-        System.out.println("String generation time: " + (System.currentTimeMillis() - time) + "ms");
+        System.out.println("String conversion time: " + (System.currentTimeMillis() - time) + "ms");
 
 
 
         // kalash method, pure hashmap
         time = System.currentTimeMillis();
-        HashMap<Character, Integer> letters = new HashMap<Character, Integer>();
+        HashMap<Character, Integer> letters = new HashMap<>();
         Character character;
         for (int i = 0; i < text.length(); i++) {
             character = text.charAt(i);
@@ -55,7 +57,7 @@ public class Letters {
 
         // kalash method, obj hashmap
         time = System.currentTimeMillis();
-        HashMap<Character, NumberObj> letters1 = new HashMap();
+        HashMap<Character, NumberObj> letters1 = new HashMap<>();
         Character character1;
         for (int i = 0; i < text.length(); i++) {
             character1 = text.charAt(i);
@@ -78,6 +80,59 @@ public class Letters {
         System.out.println("Obj hashmap: " + result1.getKey() + " = " + result1.getValue().getNumber() + ", " +
                 (System.currentTimeMillis() - time) + "ms");
 
+
+
+        // kalash method, obj box/unbox hashmap
+        time = System.currentTimeMillis();
+        HashMap<Character, NumberObjBox> letters2 = new HashMap<>();
+        Character character2;
+        for (int i = 0; i < text.length(); i++) {
+            character2 = text.charAt(i);
+            if (letters2.containsKey(character2)) {
+                letters2.get(character2).addOne();
+            } else {
+                letters2.put(character2, new NumberObjBox());
+            }
+        }
+        Map.Entry<Character, NumberObjBox> result2 = null;
+        for (Map.Entry<Character, NumberObjBox> entry : letters2.entrySet()) {
+            if (result2 == null) {
+                result2 = entry;
+            } else {
+                if (entry.getValue().getNumber() > result2.getValue().getNumber()) {
+                    result2 = entry;
+                }
+            }
+        }
+        System.out.println("Obj box hashmap: " + result2.getKey() + " = " + result2.getValue().getNumber() + ", " +
+                (System.currentTimeMillis() - time) + "ms");
+
+
+
+        // kalash method, obj hashmap, stringbuilder
+        time = System.currentTimeMillis();
+        HashMap<Character, NumberObj> letters3 = new HashMap<>();
+        Character character3;
+        for (int i = 0; i < stringBuilder.length(); i++) {
+            character3 = stringBuilder.charAt(i);
+            if (letters3.containsKey(character3)) {
+                letters3.get(character3).addOne();
+            } else {
+                letters3.put(character3, new NumberObj());
+            }
+        }
+        Map.Entry<Character, NumberObj> result3 = null;
+        for (Map.Entry<Character, NumberObj> entry : letters3.entrySet()) {
+            if (result3 == null) {
+                result3 = entry;
+            } else {
+                if (entry.getValue().getNumber() > result3.getValue().getNumber()) {
+                    result3 = entry;
+                }
+            }
+        }
+        System.out.println("Obj hashmap sb: " + result3.getKey() + " = " + result3.getValue().getNumber() + ", " +
+                (System.currentTimeMillis() - time) + "ms");
 
 
         // timon method (what i thought it would be like)
